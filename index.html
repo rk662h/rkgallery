@@ -6,14 +6,12 @@
   <title>RK Gallery</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       background: #0a0a0a;
       color: #fff;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       overflow-x: hidden;
     }
-
     /* NAV */
     nav {
       position: fixed;
@@ -25,6 +23,7 @@
       align-items: center;
       backdrop-filter: blur(12px);
       background: rgba(10,10,10,0.6);
+      transition: all 0.3s ease;
     }
     .logo {
       font-size: 18px;
@@ -45,7 +44,6 @@
       transition: color 0.3s;
     }
     nav ul a:hover { color: #fff; }
-
     /* HERO */
     .hero {
       height: 100vh;
@@ -62,6 +60,237 @@
       text-transform: uppercase;
       color: rgba(255,255,255,0.4);
       margin-bottom: 24px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 1s ease 0.3s forw
+    }
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 120px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 span { color: rgba(255,255,255,0.25); }
+    .hero-sub {
+      margin-top: 32px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.5);
+      max-width: 480px;
+      line-height: 1.6;
+    }
+    .hero-cta {
+      margin-top: 48px;
+      padding: 16px 40px;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 100px;
+      transition: all 0.3s;
+    }
+    .hero-cta:hover {
+      background: #fff;
+      color: #0a0a0a;
+    }
+    /* SCROLL SECTIONS */
+    .section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 48px;
+    }
+    .section-inner {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .section-inner.reverse { direction: rtl; }
+    .section-inner.reverse > * { direction: ltr; }
+    .section-text h2 {
+      font-size: clamp(32px, 4vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .section-text p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.7;
+    }
+    .section-image {
+      aspect-ratio: 4/5;
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.07);
+      overflow: hidden;
+      position: relative;
+    }
+    .section-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.03), transparent);
+    }
+    /* MARQUEE */
+    .marquee-section {
+      padding: 80px 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 80px;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      font-size: 48px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.08);
+      white-space: nowrap;
+      text-transform: uppercase;
+    }
+    .marquee-item span { color: rgba(255,255,255,0.25); margin: 0 40px; }
+    /* FOOTER */
+    footer {
+      padding: 80px 48px 48px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    footer p { color: rgba(255,255,255,0.3); font-size: 14px; }
+    
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">RK Gallery</div>
+    <ul>
+      <li><a href="#">Works</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Est. 2024 — Hermosillo</p>
+    <h1>Art that<br><span>moves</span> you</h1>
+    <p class="hero-sub">Una galería donde cada pieza cuenta una historia que no necesita palabras.</p>
+    <a href="#" class="hero-cta">Explorar</a>
+  </section>
+
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Photography <span>✦</span></span>
+      <span class="marquee-item">Fine Art <span>✦</span></span>
+      <span class="marquee-item">Digital <span>✦</span></span>
+      <span class="marquee-item">Curation <span>✦</span></span>
+      <span class="marquee-item">Photography <span>✦</span></span>
+      <span class="marquee-item">Fine Art <span>✦</span></span>
+      <span class="marquee-item">Digital <span>✦</span></span>
+      <span class="marquee-item">Curation <span>✦</span></span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="section-text">
+        <h2>Obras que definen espacios</h2>
+        <p>Cada pieza en RK Gallery es seleccionada por su capacidad de transformar un espacio — no solo decorarlo.</p>
+      </div>
+      <div class="section-image"></div>
+    </div>
+  </section>
+
+  <section class="section" style="background: rgba(255,255,255,0.02)">
+    <div class="section-inner reverse reveal">
+      <div class="section-text">
+        <h2>Artistas que rompen límites</h2>
+        <p>Trabajamos con creadores que cuestionan lo establecido y proponen nuevas formas de ver el mundo.</p>
+      </div>
+      <div class="section-image"></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo">RK Gallery</div>
+    <p>© 2024 RK Gallery. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación de entrada inicial (Hero)
+    gsap.from(".hero-eyebrow", { opacity: 0, y: 20, duration: 1, delay: 0.2, ease: "power3.out" });
+    gsap.from(".hero h1", { opacity: 0, y: 30, duration: 1, delay: 0.4, ease: "power3.out" });
+    gsap.from(".hero-sub", { opacity: 0, y: 20, duration: 1, delay: 0.6, ease: "power3.out" });
+    gsap.from(".hero-cta", { opacity: 0, y: 20, duration: 1, delay: 0.8, ease: "power3.out" });
+
+    // Animaciones controladas por Scroll (Efecto Apple)
+    gsap.utils.toArray('.reveal').forEach((section) => {
+      const image = section.querySelector('.section-image');
+      const text = section.querySelector('.section-text');
+
+      gsap.fromTo(text, 
+        { opacity: 0, y: 60 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 1.2,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+
+      if(image) {
+        gsap.fromTo(image,
+          { scale: 0.85, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: image,
+              start: "top 90%",
+              end: "bottom 40%",
+              scrub: 1
+            }
+          }
+        );
+      }
+    });
+
+    // Cambios dinámicos en el Navbar al scrollear
+    gsap.to("nav", {
+      background: "rgba(10, 10, 10, 0.95)",
+      borderBottom: "1px solid rgba(255, 255, 255, 0.08)",
+      padding: "16px 48px",
+      duration: 0.4,
+      scrollTrigger: {
+        trigger: "body",
+        start: "top -40px",
+        toggleActions: "play none none reverse"
+      }
+    });
+  </script>
+</body>
+</html>
